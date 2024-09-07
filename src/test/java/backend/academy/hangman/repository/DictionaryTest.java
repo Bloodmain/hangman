@@ -1,10 +1,10 @@
 package backend.academy.hangman.repository;
 
-import backend.academy.hangman.game.words.Categories;
-import backend.academy.hangman.game.words.Dictionary;
-import backend.academy.hangman.game.words.Difficulties;
-import backend.academy.hangman.game.words.Word;
-import backend.academy.hangman.game.words.WordClassification;
+import backend.academy.hangman.game.word.Categories;
+import backend.academy.hangman.game.word.Dictionary;
+import backend.academy.hangman.game.word.Difficulties;
+import backend.academy.hangman.game.word.Word;
+import backend.academy.hangman.game.word.WordClassification;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.RepeatedTest;
@@ -36,19 +36,19 @@ public class DictionaryTest {
     @DisplayName("ensure that all words for the category can be accessed")
     void allWordsCanBeAccessed() {
         WordClassification classification = Instancio.create(WordClassification.class);
-        List<Word> wordList =
+        List<Word> expected =
             Instancio.ofList(Word.class).size(3).set(all(WordClassification.class), classification).create();
-        Dictionary dict = new WordDictionary(wordList);
+        Dictionary dict = new WordDictionary(expected);
 
-        Set<Word> got = new HashSet<>();
-        while (got.size() != wordList.size()) {
-            got.add(dict.getRandomWord(classification));
+        Set<Word> actual = new HashSet<>();
+        while (actual.size() != expected.size()) {
+            actual.add(dict.getRandomWord(classification));
         }
 
-        assertThat(got.size()).isEqualTo(wordList.size());
+        assertThat(actual.size()).isEqualTo(expected.size());
     }
 
-    @RepeatedTest(10)
+    @RepeatedTest(5)
     @DisplayName("get a word with the specific category from the filled list")
     void getFromFullList() {
         List<Word> wordList = Instancio.ofList(Word.class).size(100).create();

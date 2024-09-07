@@ -1,10 +1,11 @@
 package backend.academy.hangman.repository;
 
-import backend.academy.hangman.game.words.Categories;
-import backend.academy.hangman.game.words.Dictionary;
-import backend.academy.hangman.game.words.Difficulties;
-import backend.academy.hangman.game.words.Word;
-import backend.academy.hangman.game.words.WordClassification;
+import backend.academy.hangman.game.word.Categories;
+import backend.academy.hangman.game.word.Dictionary;
+import backend.academy.hangman.game.word.Difficulties;
+import backend.academy.hangman.game.word.Word;
+import backend.academy.hangman.game.word.WordClassification;
+import org.jspecify.annotations.NonNull;
 import java.security.SecureRandom;
 import java.util.List;
 import java.util.Map;
@@ -41,7 +42,7 @@ public class WordDictionary implements Dictionary {
             new WordClassification(Categories.PROGRAMMING, Difficulties.MEDIUM)),
         new Word("eclipse", "IDE",
             new WordClassification(Categories.PROGRAMMING, Difficulties.MEDIUM)),
-        new Word("refactoring", "process that never happens",
+        new Word("refactoring", "Process that never happens",
             new WordClassification(Categories.PROGRAMMING, Difficulties.MEDIUM)),
         new Word("mutable", "A c++ keyword",
             new WordClassification(Categories.PROGRAMMING, Difficulties.HARD)),
@@ -79,7 +80,7 @@ public class WordDictionary implements Dictionary {
         this(DEFAULT_WORDS);
     }
 
-    public WordDictionary(List<Word> words) {
+    public WordDictionary(@NonNull List<Word> words) {
         classifiedWords = words.stream()
             .collect(Collectors.groupingBy(Word::classification));
     }
@@ -87,7 +88,7 @@ public class WordDictionary implements Dictionary {
     private final SecureRandom rnd = new SecureRandom();
 
     @Override
-    public Word getRandomWord(WordClassification classification) {
+    public Word getRandomWord(@NonNull WordClassification classification) {
         List<Word> words = classifiedWords.get(classification);
         return words.get(rnd.nextInt(words.size()));
     }

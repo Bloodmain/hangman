@@ -1,4 +1,4 @@
-package backend.academy.hangman.game.words;
+package backend.academy.hangman.game.word;
 
 /**
  * Class to provide classification for a word, so we can enlarge our classification parameters easily.

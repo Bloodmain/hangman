@@ -1,4 +1,4 @@
-package backend.academy.hangman.game.words;
+package backend.academy.hangman.game.word;
 
 public enum Categories {
     NATURE, PROGRAMMING, JOBS
