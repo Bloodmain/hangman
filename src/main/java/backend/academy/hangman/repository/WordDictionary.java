@@ -4,11 +4,11 @@ import backend.academy.hangman.game.Settings;
 import backend.academy.hangman.game.word.Dictionary;
 import backend.academy.hangman.game.word.Word;
 import backend.academy.hangman.game.word.WordClassification;
-import org.jspecify.annotations.NonNull;
 import java.security.SecureRandom;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import org.jspecify.annotations.NonNull;
 
 public class WordDictionary implements Dictionary {
     /**

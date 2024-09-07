@@ -4,9 +4,9 @@ import backend.academy.hangman.game.word.Categories;
 import backend.academy.hangman.game.word.Difficulties;
 import backend.academy.hangman.game.word.Word;
 import backend.academy.hangman.game.word.WordClassification;
-import lombok.experimental.UtilityClass;
 import java.util.List;
 import java.util.Map;
+import lombok.experimental.UtilityClass;
 
 @UtilityClass
 public class Settings {
@@ -109,7 +109,8 @@ public class Settings {
 
     public static final String CATEGORY_CHOOSE_TEXT = "First, choose a category of hidden word.";
     public static final String CATEGORY_CHOOSE_PROMPT =
-        "Enter a number of a category or an empty line to choose a random category. Also you may enter \"%s\" to exit the game: "
+        ("Enter a number of a category or an empty line to choose a random category. "
+            + "Also you may enter \"%s\" to exit the game: ")
             .formatted(EXIT_CODE);
 
     public static final String DIFFICULTY_CHOOSE_TEXT =
