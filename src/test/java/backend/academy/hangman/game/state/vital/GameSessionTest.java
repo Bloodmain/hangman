@@ -2,6 +2,7 @@ package backend.academy.hangman.game.state.vital;
 
 import backend.academy.hangman.game.word.Word;
 import org.instancio.Instancio;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.util.function.Predicate;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -9,6 +10,7 @@ import static org.instancio.Select.all;
 
 public class GameSessionTest {
     @Test
+    @DisplayName("guesses correct letters")
     public void correctGuesses() {
         Word word = Instancio.create(Word.class);
         GameSession session = new GameSession(word);
@@ -21,6 +23,7 @@ public class GameSessionTest {
     }
 
     @Test
+    @DisplayName("guesses incorrect letters")
     public void wrongGuesses() {
         Word word = Instancio.create(Word.class);
         GameSession session = new GameSession(word);
@@ -35,6 +38,7 @@ public class GameSessionTest {
     }
 
     @Test
+    @DisplayName("Check if the letter is correct")
     public void checkForLetterCorrectness() {
         Word word = Instancio.of(Word.class).set(all(String.class), "abcklo").create();
         GameSession session = new GameSession(word);
