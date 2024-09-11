@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 import lombok.Getter;
 import lombok.Setter;
+import org.jspecify.annotations.NonNull;
 
 @Getter
 public class GameSession {
@@ -20,7 +21,7 @@ public class GameSession {
 
     private boolean isSessionEnded = false;
 
-    public GameSession(Word answer) {
+    public GameSession(@NonNull Word answer) {
         this.answer = answer;
     }
 

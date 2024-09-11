@@ -12,9 +12,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.jspecify.annotations.NonNull;
 
 public class StateDisplayService {
-    public String prepareStateToDisplay(State state) {
+    public String prepareStateToDisplay(@NonNull State state) {
         return switch (state) {
             case MenuState menuState -> prepareMenu();
             case ChooseCategoryState categoryState -> prepareCategory();

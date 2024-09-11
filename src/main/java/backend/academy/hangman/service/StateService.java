@@ -33,7 +33,7 @@ public class StateService {
         };
     }
 
-    private State processMenuInput(@NonNull MenuState state, @NonNull String input) {
+    private State processMenuInput(MenuState state, String input) {
         switch (input) {
             case Settings.NEW_GAME_CODE -> {
                 GameSession session = new GameSession(new Word());
@@ -51,7 +51,7 @@ public class StateService {
         }
     }
 
-    private State processCategoryInput(@NonNull ChooseCategoryState state, @NonNull String input) {
+    private State processCategoryInput(ChooseCategoryState state, String input) {
         if (Settings.EXIT_CODE.equals(input)) {
             state.exitGame();
             return state;
@@ -74,7 +74,7 @@ public class StateService {
         return state;
     }
 
-    private State processDifficultyInput(@NonNull ChooseDifficultyState state, @NonNull String input) {
+    private State processDifficultyInput(ChooseDifficultyState state, String input) {
         if (Settings.EXIT_CODE.equals(input)) {
             state.exitGame();
             return state;
@@ -101,7 +101,7 @@ public class StateService {
         return state;
     }
 
-    private State processHangmanInput(@NonNull HangmanState state, @NonNull String input) {
+    private State processHangmanInput(HangmanState state, String input) {
         GameSession session = state.status().session();
 
         if (Settings.EXIT_CODE.equals(input)) {
