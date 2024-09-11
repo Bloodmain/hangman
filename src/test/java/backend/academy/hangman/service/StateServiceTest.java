@@ -8,6 +8,7 @@ import backend.academy.hangman.game.state.State;
 import backend.academy.hangman.game.state.vital.GameSession;
 import backend.academy.hangman.game.state.vital.GameStatus;
 import backend.academy.hangman.game.word.Word;
+import backend.academy.hangman.game.word.WordClassification;
 import backend.academy.hangman.repository.WordDictionary;
 import org.instancio.Instancio;
 import org.junit.jupiter.api.DisplayName;
@@ -148,5 +149,31 @@ public class StateServiceTest {
 
         state = (HangmanState) service.processInput(state, "c");
         assertThat(state.hangmanSubState()).isEqualTo(6);
+    }
+
+    @Test
+    @DisplayName("random category choose")
+    public void chooseRandomCategory() {
+        StateService service = new StateService(new WordDictionary());
+        State state = Instancio.of(ChooseCategoryState.class)
+            .set(field(WordClassification.class, "category"), null)
+            .create();
+
+        state = service.processInput(state, "");
+        assertThat(state.status().session().answer().classification()).isNotNull();
+        assertThat(state.status().session().answer().classification().category()).isNotNull();
+    }
+
+    @Test
+    @DisplayName("random difficulty choose")
+    public void chooseRandomDifficulty() {
+        StateService service = new StateService(new WordDictionary());
+        State state = Instancio.of(ChooseDifficultyState.class)
+            .set(field(WordClassification.class, "difficulty"), null)
+            .create();
+
+        state = service.processInput(state, "");
+        assertThat(state.status().session().answer().classification()).isNotNull();
+        assertThat(state.status().session().answer().classification().difficulty()).isNotNull();
     }
 }
