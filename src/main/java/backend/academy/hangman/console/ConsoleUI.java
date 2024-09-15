@@ -4,6 +4,7 @@ import backend.academy.hangman.game.Settings;
 import backend.academy.hangman.game.io.UI;
 import backend.academy.hangman.game.state.State;
 import backend.academy.hangman.game.state.vital.GameStatus;
+import backend.academy.hangman.game.state.vital.MessageLevel;
 import backend.academy.hangman.game.state.vital.UserMessage;
 import backend.academy.hangman.service.StateDisplayService;
 import com.diogonunes.jcolor.Ansi;
@@ -35,7 +36,7 @@ public class ConsoleUI implements UI {
         if (!status.userMessage().message().isBlank()) {
             out.write(coloredMessage(status.userMessage()));
 
-            status.userMessage().message("");
+            status.userMessage(new UserMessage("", MessageLevel.INFO));
             displayNewline();
             displayNewline();
         }
